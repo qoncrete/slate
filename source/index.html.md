@@ -3,187 +3,334 @@ title: API Reference
 
 language_tabs:
   - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to [Qoncrete.com api](https://qoncrete.com).
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We will introduce you with some examples how to work with our api. Anything you
+can achieve with the UI can be done directly from our API.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+All the action are performed via `http[s]://api.qoncrete.com/v2/`
 
 # Authentication
 
-> To authorize, use this code:
+For any Authentication method, we strongly encourage your to do it via HTTPS.
 
-```ruby
-require 'kittn'
+## JWT (Json Web Token)
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+Qoncrete UI is only a graphic representation of the API. You can authenticate
+your client by generating a JWT. However, the new generated token will only be
+available for 48 hours.
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+curl -i -X POST -H 'Content-type: application/json' \
+    -d '{ "email": "test@email.com", "password": "123456" }' \
+    'https://api.qoncrete.com/v2/user/login'
 
-```javascript
-const kittn = require('kittn');
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 10 Nov 2016 04:27:17 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 261
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Origin
+X-UA-Compatible: IE=Edge
 
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+    "token": "<jwt token>"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+# Authorization
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+## JWT (Json Web Token)
 
-### HTTP Request
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    -H 'Authorization:Bearer <jwt token>'\
+    'https://api.qoncrete.com/v2/source'
 
-`GET http://example.com/kittens/<ID>`
+```
 
-### URL Parameters
+## Token
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
 
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source?token=<TOKEN>'
+
+```
+
+# Registration
+
+```shell
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '{ "email": "", "password": "", "passwordConfirm": "" }'
+    'https://api.qoncrete.com/v2/user/register'
+
+```
+
+
+# Source
+
+As source is an element that can store reports.
+
+## List
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source?token=<TOKEN>'
+
+{
+    [source objects]
+}
+```
+
+## One
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
+
+{
+    "_id":"8b5229f1-ee8f-4b23-9b4c-6149288cfb51",
+    "db":"",
+    "userId":"22c4f102-7f64-460c-8d37-0862638cbc58",
+    "name":"DATATEST",
+    "created":"2016-10-12T10:57:11.324+08:00",
+    "modified":"2016-10-12T10:57:11.324+08:00",
+    "active":true,
+    "ready":1,
+    "reports":[ "<REPORT_ID>" ],
+    "reportList":[ {report object} ],
+    "sourceVersion":0,
+    "maxQuery":-1,
+    "_extra": {
+        "count":2,
+        "size":29
+    },
+    "rawttl":"",
+    "writeMinStat":0
+}
+```
+
+## Create
+
+```shell
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '{ "name": "", "rawttl": "" }'
+    'https://api.qoncrete.com/v2/source?token=<TOKEN>'
+```
+
+## Modify
+
+```shell
+curl -X PUT \
+    -H 'Content-type: application/json' \
+    -d '{ "name": "", "rawttl": "" }'
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
+```
+
+## Delete
+
+```shell
+curl -X DELETE \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
+```
+
+# Report
+
+## List
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report?token=<TOKEN>'
+
+{
+    [report object]
+}
+```
+
+## One
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>?token=<TOKEN>'
+
+{
+    "_id":"433e40f7-5d44-4363-96ad-517670fead31",
+    "sourceId":"8b5229f1-ee8f-4b23-9b4c-6149288cfb51",
+    "name":"my report",
+    "period":"1M",
+    "created":"2016-10-14T14:44:44.983+08:00",
+    "modified":"2016-10-19T16:06:38.27+08:00",
+    "reportVersion":4,
+    "active":true,
+    "preprocess":[ preprocess object ],
+    "filter":[ filter object ],
+    "groupBy":[ groupBy object ],
+    "values":[ values object ],
+    "_extra":null,
+    "storageVersion":0,
+    "dataSize":32768,
+    "startingPoint":""
+}
+```
+
+## Create
+
+```shell
+
+# REPORT_JSON
+# {
+#     "name": "",
+#     "period": "",
+#     "preprocess":[ preprocess object ],
+#     "filter":[ filter object ],
+#     "groupBy":[ groupBy object ],
+#     "values":[ values object ]
+# }
+
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '<REPORT_JSON>' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report?token=<TOKEN>'
+```
+
+## Modify
+
+```shell
+
+# REPORT_JSON
+# {
+#     "name": "",
+#     "period": "",
+#     "preprocess":[ preprocess object ],
+#     "filter":[ filter object ],
+#     "groupBy":[ groupBy object ],
+#     "values":[ values object ]
+# }
+
+curl -X PUT \
+    -H 'Content-type: application/json' \
+    -d '<REPORT_JSON>' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>?token=<TOKEN>'
+```
+
+## Delete
+
+```shell
+curl -X DELETE \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>?token=<TOKEN>'
+```
+
+# Report Preprocess
+
+```json
+{
+	"func": "",
+	"injectKey": ""
+}
+```
+
+# Report Filter
+
+```json
+{
+    "key": "",
+    "condition": "",
+    "type": "",
+    "comparator": {}
+}
+```
+
+# Report GroupBy
+
+```json
+{
+	"name": "",
+	"keys": [""]
+}
+```
+
+# Report Value
+
+```json
+{
+    "name": "",
+    "key": "",
+    "type": ""
+}
+```
+
+# Token
+
+## List
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/token?token=<TOKEN>'
+
+{
+    [token objects]
+}
+```
+
+## One
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/token/<TOKEN_ID>?token=<TOKEN>'
+
+{
+    "_id":"97b8a203-f4ca-4832-8469-d2188e4c487g1",
+    "userId":"22c4f102-7f64-460c-8d37-0862638cbc51",
+    "name":"Manage",
+    "access":7,
+    "created":"2016-08-05T14:32:44.463+08:00",
+    "modified":"2016-09-08T12:54:19.587+08:00"
+}
+```
+
+## Create
+
+```shell
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '{ "name": "", "access": "" }'
+    'https://api.qoncrete.com/v2/token?token=<TOKEN>'
+```
+
+## Modify
+
+```shell
+curl -X PUT \
+    -H 'Content-type: application/json' \
+    -d '{ "name": "", "access": "" }'
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
+```
+
+## Delete
+
+```shell
+curl -X DELETE \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
+```
