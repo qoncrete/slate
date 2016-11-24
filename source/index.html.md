@@ -150,9 +150,7 @@ curl -X DELETE \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
 ```
 
-## Share
-
-### List
+## Share List
 
 ```shell
 curl -X GET \
@@ -164,7 +162,7 @@ curl -X GET \
 }
 ```
 
-### One
+## Share One
 
 ```shell
 curl -X GET \
@@ -182,7 +180,7 @@ curl -X GET \
 }
 ```
 
-### Create
+## Share Create
 
 ```shell
 curl -X POST \
@@ -191,7 +189,7 @@ curl -X POST \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>/share?token=<TOKEN>'
 ```
 
-### Delete
+## Share Delete
 
 ```shell
 curl -X DELETE \
@@ -288,9 +286,7 @@ curl -X DELETE \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>?token=<TOKEN>'
 ```
 
-## Share
-
-### List
+## Share List
 
 ```shell
 curl -X GET \
@@ -302,7 +298,7 @@ curl -X GET \
 }
 ```
 
-### One
+## Share One
 
 ```shell
 curl -X GET \
@@ -321,7 +317,7 @@ curl -X GET \
 }
 ```
 
-### Create
+## Share Create
 
 ```shell
 curl -X POST \
@@ -330,7 +326,7 @@ curl -X POST \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/share?token=<TOKEN>'
 ```
 
-### Delete
+## Share Delete
 
 ```shell
 curl -X DELETE \
