@@ -202,7 +202,7 @@ curl -X GET \
 #     "preprocess":[ preprocess object ],
 #     "filter":[ filter object ],
 #     "groupBy":[ groupBy object ],
-#     "values":[ values object ]
+#     "values":[ value object ]
 # }
 
 curl -X POST \
@@ -243,8 +243,11 @@ curl -X DELETE \
 
 ```json
 {
+	"key": "",
+	"injectKey": "",
 	"func": "",
-	"injectKey": ""
+	"param1": "",
+	"param2": ""
 }
 ```
 
@@ -274,7 +277,8 @@ curl -X DELETE \
 {
     "name": "",
     "key": "",
-    "type": ""
+    "type": "",
+	"mustExists": true
 }
 ```
 
@@ -334,3 +338,64 @@ curl -X DELETE \
     -H 'Content-type: application/json' \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
 ```
+
+# Scan
+
+## ScanDates
+
+```shell
+
+# SCAN_DATES_JSON
+# {
+#     "from":"2016-06-30T00:14:00.000Z",
+#     "to":"2016-06-30T00:14:00.000Z",
+#     "keys": []
+#	  "sort": "asc",
+#	  "count": 20,
+#     "filters": [{"value": 0, "comp": ">=", "to": 10}]
+# }
+
+curl -X POST \
+    -H 'Content-type: application/json' \
+	-d '<SCAN_DATES_JSON>' \
+	'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/scandates'
+```
+
+## ScanDatesExport
+
+```shell
+
+curl -X GET \
+	'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/scandates/export?query=<SCAN_DATES_JSON>'
+```
+
+## ScanKeys
+
+```shell
+
+# SCAN_KEYS_JSON
+# {
+#     "at":"2016-06-30T00:14:00.000Z",
+#     "klen": 1,
+#     "keySearch": "",
+#     "count": 20,
+#     "cursor": 20,
+#	  "sortType": "asc",
+#     "sortPos": 1
+#     "filters": [{"value": 0, "comp": ">=", "to": 10}]
+# }
+
+curl -X POST \
+    -H 'Content-type: application/json' \
+	-d '<SCAN_KEYS_JSON>' \
+	'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/scankeys'
+```         
+
+## ScanKeysExport
+
+```shell
+
+curl -X GET \
+	'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/scankeys/export?query=<SCAN_KEYS_JSON>'
+```
+
