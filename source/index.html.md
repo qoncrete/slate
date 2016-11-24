@@ -183,7 +183,7 @@ curl -X GET \
     "preprocess":[ preprocess object ],
     "filter":[ filter object ],
     "groupBy":[ groupBy object ],
-    "values":[ values object ],
+    "values":[ value object ],
     "_extra":null,
     "storageVersion":0,
     "dataSize":32768,
@@ -222,7 +222,7 @@ curl -X POST \
 #     "preprocess":[ preprocess object ],
 #     "filter":[ filter object ],
 #     "groupBy":[ groupBy object ],
-#     "values":[ values object ]
+#     "values":[ value object ]
 # }
 
 curl -X PUT \
