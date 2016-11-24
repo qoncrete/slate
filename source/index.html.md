@@ -150,6 +150,55 @@ curl -X DELETE \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
 ```
 
+## Share
+
+### List
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/share?token=<TOKEN>'
+
+{
+    [source share objects]
+}
+```
+
+### One
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/share/<SHARE_ID>?token=<TOKEN>'
+
+{
+    "_id": "",
+	"ownerId": "",
+	"userId": "",
+	"userEmail": "",
+	"sourceId": "",
+	"readAccess": true,
+	"writeAccess": false
+}
+```
+
+### Create
+
+```shell
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '{ "email": "" }'
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/share?token=<TOKEN>'
+```
+
+### Delete
+
+```shell
+curl -X DELETE \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/share/<SHARE_ID>?token=<TOKEN>'
+```
+
 # Report
 
 ## List
@@ -237,6 +286,56 @@ curl -X PUT \
 curl -X DELETE \
     -H 'Content-type: application/json' \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>?token=<TOKEN>'
+```
+
+## Share
+
+### List
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/share?token=<TOKEN>'
+
+{
+    [report share objects]
+}
+```
+
+### One
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/<SHARE_ID>?token=<TOKEN>'
+
+{
+    "_id": "",
+	"ownerId": "",
+	"userId": "",
+	"userEmail": "",
+	"sourceId": "",
+	"reportId": "",
+	"readAccess": true,
+	"writeAccess": false
+}
+```
+
+### Create
+
+```shell
+curl -X POST \
+    -H 'Content-type: application/json' \
+    -d '{ "email": "" }'
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/share?token=<TOKEN>'
+```
+
+### Delete
+
+```shell
+curl -X DELETE \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/share/<SHARE_ID>?token=<TOKEN>'
 ```
 
 # Report Preprocess
@@ -398,4 +497,3 @@ curl -X POST \
 curl -X GET \
 	'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/scankeys/export?query=<SCAN_KEYS_JSON>'
 ```
-
