@@ -120,7 +120,9 @@ curl -X GET \
         "size":29
     },
     "rawttl":"",
-    "writeMinStat":0
+    "writeMinStat":0,
+    "writeAccess": true,
+    "readAccess": true
 }
 ```
 
@@ -234,7 +236,9 @@ curl -X GET \
     "_extra":null,
     "storageVersion":0,
     "dataSize":32768,
-    "startingPoint":""
+    "startingPoint":"",
+    "writeAccess": true,
+    "readAccess": true
 }
 ```
 
