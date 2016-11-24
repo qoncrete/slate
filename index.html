@@ -236,9 +236,7 @@ X-UA-Compatible: <span class="nv">IE</span><span class="o">=</span>Edge
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;?token=&lt;TOKEN&gt;'</span>
 </code></pre>
 
-<h2 id="share">Share</h2>
-
-<h3 id="list">List</h3>
+<h2 id="share-list">Share List</h2>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
@@ -248,7 +246,7 @@ X-UA-Compatible: <span class="nv">IE</span><span class="o">=</span>Edge
 <span class="o">}</span>
 </code></pre>
 
-<h3 id="one">One</h3>
+<h2 id="share-one">Share One</h2>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
@@ -264,14 +262,14 @@ X-UA-Compatible: <span class="nv">IE</span><span class="o">=</span>Edge
 <span class="o">}</span>
 </code></pre>
 
-<h3 id="create">Create</h3>
+<h2 id="share-create">Share Create</h2>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     -d <span class="s1">'{ "email": "" }'</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
 </code></pre>
 
-<h3 id="delete">Delete</h3>
+<h2 id="share-delete">Share Delete</h2>
 <pre class="highlight shell"><code>curl -X DELETE <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
@@ -356,9 +354,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;?token=&lt;TOKEN&gt;'</span>
 </code></pre>
 
-<h2 id="share">Share</h2>
-
-<h3 id="list">List</h3>
+<h2 id="share-list">Share List</h2>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
@@ -368,7 +364,7 @@ curl -X PUT <span class="se">\</span>
 <span class="o">}</span>
 </code></pre>
 
-<h3 id="one">One</h3>
+<h2 id="share-one">Share One</h2>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
@@ -385,14 +381,14 @@ curl -X PUT <span class="se">\</span>
 <span class="o">}</span>
 </code></pre>
 
-<h3 id="create">Create</h3>
+<h2 id="share-create">Share Create</h2>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     -d <span class="s1">'{ "email": "" }'</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
 </code></pre>
 
-<h3 id="delete">Delete</h3>
+<h2 id="share-delete">Share Delete</h2>
 <pre class="highlight shell"><code>curl -X DELETE <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/share/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
