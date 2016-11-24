@@ -236,6 +236,47 @@ X-UA-Compatible: <span class="nv">IE</span><span class="o">=</span>Edge
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;?token=&lt;TOKEN&gt;'</span>
 </code></pre>
 
+<h2 id="share">Share</h2>
+
+<h3 id="list">List</h3>
+<pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
+
+<span class="o">{</span>
+    <span class="o">[</span><span class="nb">source </span>share objects]
+<span class="o">}</span>
+</code></pre>
+
+<h3 id="one">One</h3>
+<pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
+
+<span class="o">{</span>
+    <span class="s2">"_id"</span>: <span class="s2">""</span>,
+    <span class="s2">"ownerId"</span>: <span class="s2">""</span>,
+    <span class="s2">"userId"</span>: <span class="s2">""</span>,
+    <span class="s2">"userEmail"</span>: <span class="s2">""</span>,
+    <span class="s2">"sourceId"</span>: <span class="s2">""</span>,
+    <span class="s2">"readAccess"</span>: <span class="nb">true</span>,
+    <span class="s2">"writeAccess"</span>: <span class="nb">false</span>
+<span class="o">}</span>
+</code></pre>
+
+<h3 id="create">Create</h3>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    -d <span class="s1">'{ "email": "" }'</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
+</code></pre>
+
+<h3 id="delete">Delete</h3>
+<pre class="highlight shell"><code>curl -X DELETE <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/share/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
+</code></pre>
+
 <h1 id="report">Report</h1>
 
 <h2 id="list">List</h2>
@@ -265,7 +306,7 @@ X-UA-Compatible: <span class="nv">IE</span><span class="o">=</span>Edge
     <span class="s2">"preprocess"</span>:[ preprocess object <span class="o">]</span>,
     <span class="s2">"filter"</span>:[ filter object <span class="o">]</span>,
     <span class="s2">"groupBy"</span>:[ groupBy object <span class="o">]</span>,
-    <span class="s2">"values"</span>:[ values object <span class="o">]</span>,
+    <span class="s2">"values"</span>:[ value object <span class="o">]</span>,
     <span class="s2">"_extra"</span>:null,
     <span class="s2">"storageVersion"</span>:0,
     <span class="s2">"dataSize"</span>:32768,
@@ -282,7 +323,7 @@ X-UA-Compatible: <span class="nv">IE</span><span class="o">=</span>Edge
 <span class="c">#     "preprocess":[ preprocess object ],</span>
 <span class="c">#     "filter":[ filter object ],</span>
 <span class="c">#     "groupBy":[ groupBy object ],</span>
-<span class="c">#     "values":[ values object ]</span>
+<span class="c">#     "values":[ value object ]</span>
 <span class="c"># }</span>
 
 curl -X POST <span class="se">\</span>
@@ -300,7 +341,7 @@ curl -X POST <span class="se">\</span>
 <span class="c">#     "preprocess":[ preprocess object ],</span>
 <span class="c">#     "filter":[ filter object ],</span>
 <span class="c">#     "groupBy":[ groupBy object ],</span>
-<span class="c">#     "values":[ values object ]</span>
+<span class="c">#     "values":[ value object ]</span>
 <span class="c"># }</span>
 
 curl -X PUT <span class="se">\</span>
@@ -315,10 +356,55 @@ curl -X PUT <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;?token=&lt;TOKEN&gt;'</span>
 </code></pre>
 
+<h2 id="share">Share</h2>
+
+<h3 id="list">List</h3>
+<pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
+
+<span class="o">{</span>
+    <span class="o">[</span>report share objects]
+<span class="o">}</span>
+</code></pre>
+
+<h3 id="one">One</h3>
+<pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
+
+<span class="o">{</span>
+    <span class="s2">"_id"</span>: <span class="s2">""</span>,
+    <span class="s2">"ownerId"</span>: <span class="s2">""</span>,
+    <span class="s2">"userId"</span>: <span class="s2">""</span>,
+    <span class="s2">"userEmail"</span>: <span class="s2">""</span>,
+    <span class="s2">"sourceId"</span>: <span class="s2">""</span>,
+    <span class="s2">"reportId"</span>: <span class="s2">""</span>,
+    <span class="s2">"readAccess"</span>: <span class="nb">true</span>,
+    <span class="s2">"writeAccess"</span>: <span class="nb">false</span>
+<span class="o">}</span>
+</code></pre>
+
+<h3 id="create">Create</h3>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    -d <span class="s1">'{ "email": "" }'</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/share?token=&lt;TOKEN&gt;'</span>
+</code></pre>
+
+<h3 id="delete">Delete</h3>
+<pre class="highlight shell"><code>curl -X DELETE <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/share/&lt;SHARE_ID&gt;?token=&lt;TOKEN&gt;'</span>
+</code></pre>
+
 <h1 id="report-preprocess">Report Preprocess</h1>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"injectKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"func"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"injectKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="nt">"param1"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"param2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -342,7 +428,8 @@ curl -X PUT <span class="se">\</span>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mustExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -391,6 +478,58 @@ curl -X PUT <span class="se">\</span>
 <pre class="highlight shell"><code>curl -X DELETE <span class="se">\</span>
     -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
     <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;?token=&lt;TOKEN&gt;'</span>
+</code></pre>
+
+<h1 id="scan">Scan</h1>
+
+<h2 id="scandates">ScanDates</h2>
+<pre class="highlight shell"><code>
+<span class="c"># SCAN_DATES_JSON</span>
+<span class="c"># {</span>
+<span class="c">#     "from":"2016-06-30T00:14:00.000Z",</span>
+<span class="c">#     "to":"2016-06-30T00:14:00.000Z",</span>
+<span class="c">#     "keys": []</span>
+<span class="c">#     "sort": "asc",</span>
+<span class="c">#     "count": 20,</span>
+<span class="c">#     "filters": [{"value": 0, "comp": "&gt;=", "to": 10}]</span>
+<span class="c"># }</span>
+
+curl -X POST <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    -d <span class="s1">'&lt;SCAN_DATES_JSON&gt;'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/scandates'</span>
+</code></pre>
+
+<h2 id="scandatesexport">ScanDatesExport</h2>
+<pre class="highlight shell"><code>
+curl -X GET <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/scandates/export?query=&lt;SCAN_DATES_JSON&gt;'</span>
+</code></pre>
+
+<h2 id="scankeys">ScanKeys</h2>
+<pre class="highlight shell"><code>
+<span class="c"># SCAN_KEYS_JSON</span>
+<span class="c"># {</span>
+<span class="c">#     "at":"2016-06-30T00:14:00.000Z",</span>
+<span class="c">#     "klen": 1,</span>
+<span class="c">#     "keySearch": "",</span>
+<span class="c">#     "count": 20,</span>
+<span class="c">#     "cursor": 20,</span>
+<span class="c">#     "sortType": "asc",</span>
+<span class="c">#     "sortPos": 1</span>
+<span class="c">#     "filters": [{"value": 0, "comp": "&gt;=", "to": 10}]</span>
+<span class="c"># }</span>
+
+curl -X POST <span class="se">\</span>
+    -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+    -d <span class="s1">'&lt;SCAN_KEYS_JSON&gt;'</span> <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/scankeys'</span>
+</code></pre>
+
+<h2 id="scankeysexport">ScanKeysExport</h2>
+<pre class="highlight shell"><code>
+curl -X GET <span class="se">\</span>
+    <span class="s1">'https://api.qoncrete.com/v2/source/&lt;SOURCE_ID&gt;/report/&lt;REPORT_ID&gt;/scankeys/export?query=&lt;SCAN_KEYS_JSON&gt;'</span>
 </code></pre>
 
       </div>
