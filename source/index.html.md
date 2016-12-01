@@ -199,6 +199,14 @@ curl -X DELETE \
     'https://api.qoncrete.com/v2/source/<SOURCE_ID>/share/<SHARE_ID>?token=<TOKEN>'
 ```
 
+## Daily statistics
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+    'https://api.qoncrete.com/v2/source/<SOURCE_ID>/stat/daily?token=<TOKEN>'
+```
+
 # Report
 
 ## List
