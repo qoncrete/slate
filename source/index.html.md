@@ -389,62 +389,42 @@ curl -X DELETE \
 }
 ```
 
-# Token
-
-## List
+# MergeReports
 
 ```shell
-curl -X GET \
-    -H 'Content-type: application/json' \
-    'https://api.qoncrete.com/v2/token?token=<TOKEN>'
 
-{
-    [token objects]
-}
-```
+# MERGE_REPORTS_JSON
+# {
+#   "mainReport":
+#   {
+#       "sid": "bc3528df-ac20-4278-b31f-0b719e6251eb",
+#       "rid": "bfc8bf58-277b-44bf-8364-e1f3913aed2c",
+#       "at": "2016-11-26T16:00:00Z",
+#       "search": "sth",
+#       "klen": 1,
+#       "limit": 10,
+#       "cursor": 10,
+#       "sort": -1,
+#       "order": "asc",
+#       "filters": [{"value": 0, "comp": ">=", "to": 10}]
+#   },
+#   "subReports":
+#   [
+#       {
+#           "sid": "bc3528df-ac20-4278-b31f-0b719e6251eb",
+#           "rid": "395b9554-a9b0-47a9-88a4-8b74e3c5e533",
+#           "search": "",
+#           "timeDiff": "-2d"
+#       }
+#   ]
+# }
 
-## One
-
-```shell
-curl -X GET \
-    -H 'Content-type: application/json' \
-    'https://api.qoncrete.com/v2/token/<TOKEN_ID>?token=<TOKEN>'
-
-{
-    "_id":"97b8a203-f4ca-4832-8469-d2188e4c487g1",
-    "userId":"22c4f102-7f64-460c-8d37-0862638cbc51",
-    "name":"Manage",
-    "access":7,
-    "created":"2016-08-05T14:32:44.463+08:00",
-    "modified":"2016-09-08T12:54:19.587+08:00"
-}
-```
-
-## Create
-
-```shell
 curl -X POST \
     -H 'Content-type: application/json' \
-    -d '{ "name": "", "access": "" }'
-    'https://api.qoncrete.com/v2/token?token=<TOKEN>'
+	-d '<MERGE_REPORTS_JSON>' \
+	'https://api.qoncrete.com/v2/query/mergereports'
 ```
 
-## Modify
-
-```shell
-curl -X PUT \
-    -H 'Content-type: application/json' \
-    -d '{ "name": "", "access": "" }'
-    'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
-```
-
-## Delete
-
-```shell
-curl -X DELETE \
-    -H 'Content-type: application/json' \
-    'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
-```
 
 # Scan
 
@@ -505,3 +485,131 @@ curl -X POST \
 curl -X GET \
 	'https://api.qoncrete.com/v2/source/<SOURCE_ID>/report/<REPORT_ID>/scankeys/export?query=<SCAN_KEYS_JSON>'
 ```
+
+# Store
+
+## List
+
+```shell
+
+curl -X GET \
+	'https://api.qoncrete.com/v2/store/:kind'
+
+ {
+	[ stored items]	 
+ }
+
+```
+
+## One
+
+```shell
+
+curl -X GET \
+    'https://api.qoncrete.com/v2/store/:kind/:id'
+
+	{
+		"id": "xxxxxx",
+		"name": "test",
+		"value": "{\"f1\": \"field one\", \"f2\": 10}"
+	}
+```         
+
+## Create
+
+```shell
+
+# ITEM_JSON 
+# {
+#     "name":"test",
+#     "value": "{\"f1\": \"field one\", \"f2\": 10}"
+# }
+
+curl -X POST \
+	-H 'Content-type: application/json' \
+    -d '<ITEM_JSON>' \
+    'https://api.qoncrete.com/v2/store/:kind'
+```
+
+## Modify
+
+```shell
+
+# UPDATE_ITEM_JSON
+# {
+#	  "id": "abdcde-dedfa-dfad-sfds",
+#     "name":"test",
+#     "value": "{\"f1\": \"field one\", \"f2\": 10}"
+# }
+
+curl -X PUT \
+    -H 'Content-type: application/json' \
+	-d '<UPDATE_ITEM_JSON>' \
+	'https://api.qoncrete.com/v2/store/:kind'
+```
+
+## Delete
+
+```shell
+
+curl -X DELETE \
+    'https://api.qoncrete.com/v2/store/:kind/:id'
+```
+
+# Token
+
+## List
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+	'https://api.qoncrete.com/v2/token?token=<TOKEN>'
+
+	{
+		[token objects]
+	}
+```
+
+## One
+
+```shell
+curl -X GET \
+    -H 'Content-type: application/json' \
+	'https://api.qoncrete.com/v2/token/<TOKEN_ID>?token=<TOKEN>'
+
+		{
+			    "_id":"97b8a203-f4ca-4832-8469-d2188e4c487g1",
+				"userId":"22c4f102-7f64-460c-8d37-0862638cbc51",
+				"name":"Manage",
+				"access":7,
+				"created":"2016-08-05T14:32:44.463+08:00",
+				"modified":"2016-09-08T12:54:19.587+08:00"
+		}
+```
+
+## Create
+
+```shell
+curl -X POST \
+    -H 'Content-type: application/json' \
+	-d '{ "name": "", "access": "" }'
+	'https://api.qoncrete.com/v2/token?token=<TOKEN>'
+```
+
+## Modify
+
+```shell
+curl -X PUT \
+    -H 'Content-type: application/json' \
+	-d '{ "name": "", "access": "" }'
+	'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
+```
+
+## Delete
+
+```shell
+curl -X DELETE \
+    -H 'Content-type: application/json' \
+	'https://api.qoncrete.com/v2/source/<SOURCE_ID>?token=<TOKEN>'
+```
+
